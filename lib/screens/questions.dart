@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttoverflow/api/api.dart';
 import 'package:fluttoverflow/api/questions.dart';
-import 'package:fluttoverflow/models/question.dart';
 import 'package:fluttoverflow/widgets/widgets.dart';
 
 class QuestionsScreen extends StatefulWidget {
@@ -10,38 +8,21 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
-  Widget getListWithSort (QuestionSort sortType) {
-    return Container(
-      key: ValueKey(sortType),
-      child: Center(
-        child: FutureLoader<List<Question>>(
-          future: api.questions
-              .getQuestions(sortType: QuestionSort.ACTIVITY),
-          builder: (context, data) {
-            return ListView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) =>
-                  QuestionWidget(question: data[index]),
-            ); // @TODO UNDUPA
-          },
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 5,
         child: Scaffold(
-            appBar: _buildTopAppBar(),
-            body: TabBarView(children: [
-              getListWithSort(QuestionSort.HOT),
-              getListWithSort(QuestionSort.ACTIVITY),
-              getListWithSort(QuestionSort.CREATION),
-              getListWithSort(QuestionSort.WEEK),
-              getListWithSort(QuestionSort.MONTH),
-            ])));
+          appBar: _buildTopAppBar(),
+          body: TabBarView(children: [
+            QuestionsList(QuestionSort.HOT),
+            QuestionsList(QuestionSort.ACTIVITY),
+            QuestionsList(QuestionSort.CREATION),
+            QuestionsList(QuestionSort.WEEK),
+            QuestionsList(QuestionSort.MONTH),
+          ])
+        )
+      );
   }
 
   Widget _buildTopAppBar() {
