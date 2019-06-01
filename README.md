@@ -22,3 +22,7 @@ and then
 - flutter run --release
 
 *for development use `flutter run` without `--release`*
+
+***Some screenshots from application***
+
+<img src="https://cdn.discordapp.com/attachments/433890507660328960/584391302754467879/Screenshot_fluttoverflow_20190601-163802.png"/><img src="https://cdn.discordapp.com/attachments/433890507660328960/584391302754467881/Screenshot_fluttoverflow_20190601-161925.png"/><img src="https://cdn.discordapp.com/attachments/433890507660328960/584391303324762112/Screenshot_fluttoverflow_20190601-160646.png"/>
