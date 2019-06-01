@@ -27,6 +27,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: _children[_currentScreenIndex],
+      appBar: _buildTopAppBar(),
       bottomNavigationBar: _buildBottomAppBar(),
     );
   }
@@ -61,6 +62,13 @@ class _MainScreenState extends State<MainScreen> {
           _buildIconButton(Icons.account_circle, 2, "Profile"),
         ],
       ),
+    );
+  }
+
+  @override
+  Widget _buildTopAppBar() {
+    return Container(
+      child: Text('ddd'),
     );
   }
 
