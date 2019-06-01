@@ -10,37 +10,37 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  Widget getListWithSort (QuestionSort sortType) {
+    return Container(
+      child: Center(
+        child: FutureLoader<List<Question>>(
+          future: api.questions
+              .getQuestions(sortType: QuestionSort.ACTIVITY),
+          builder: (context, data) {
+            return ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (context, index) =>
+                  QuestionWidget(question: data[index]),
+            ); // @TODO UNDUPA
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
-      child: Scaffold(
-        appBar: _buildTopAppBar(),
-        body: TabBarView(
-children: [
-  Container(
-          child: Center(
-            child: FutureLoader<List<Question>>(
-              future:
-                  api.questions.getQuestions(sortType: QuestionSort.ACTIVITY),
-              builder: (context, data) {
-                return ListView.builder(
-                  itemCount: data.length,
-                  itemBuilder: (context, index) =>
-                      QuestionWidget(question: data[index]),
-                ); // @TODO UNDUPA
-              },
-            ),
-          ),
-        ),
-        Text('dupa'),
-                Text('dupa'),
-        Text('dupa'),
-        Text('dupa'),
-
-      ]))
-      
-    );
+        length: 5,
+        child: Scaffold(
+            appBar: _buildTopAppBar(),
+            body: TabBarView(children: [
+              getListWithSort(QuestionSort.HOT),
+              getListWithSort(QuestionSort.ACTIVITY),
+              getListWithSort(QuestionSort.CREATION),
+              getListWithSort(QuestionSort.WEEK),
+              getListWithSort(QuestionSort.MONTH),
+            ])));
   }
 
   Widget _buildTopAppBar() {
