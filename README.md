@@ -25,4 +25,4 @@ and then
 
 ***Some screenshots from application***
 
-<img src="https://cdn.discordapp.com/attachments/433890507660328960/584391302754467879/Screenshot_fluttoverflow_20190601-163802.png"/><img src="https://cdn.discordapp.com/attachments/433890507660328960/584391302754467881/Screenshot_fluttoverflow_20190601-161925.png"/><img src="https://cdn.discordapp.com/attachments/433890507660328960/584391303324762112/Screenshot_fluttoverflow_20190601-160646.png"/>
+<img src="https://cdn.discordapp.com/attachments/433890507660328960/584391302754467879/Screenshot_fluttoverflow_20190601-163802.png" height="33%" width="33%"/><img src="https://cdn.discordapp.com/attachments/433890507660328960/584391302754467881/Screenshot_fluttoverflow_20190601-161925.png" height="33%" width="33%"/><img src="https://cdn.discordapp.com/attachments/433890507660328960/584391303324762112/Screenshot_fluttoverflow_20190601-160646.png" height="33%" width="33%"/>
