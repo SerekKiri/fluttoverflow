@@ -20,10 +20,13 @@ class Question {
   @JsonKey(name: 'owner')
   final ShallowUser owner;
 
+  @JsonKey(name: 'answers')
+  final Answer answers;
+
   @JsonKey(name: 'question_id')
   final int id;
 
-  Question(this.bodyMarkdown, this.title, this.tags, this.score, this.id, this.owner);
+  Question(this.bodyMarkdown, this.title, this.tags, this.score, this.id, this.owner, this.answers);
 
   factory Question.fromJson(Map<String, dynamic> json) => _$QuestionFromJson(json);
 
