@@ -42,7 +42,7 @@ class QuestionsApi extends ApiEndpoint {
     var response = await client.getRequest(
       '/questions/$id',
       site: 'stackoverflow',
-      filter: '!b1MMEU*.FpU0zn'
+      filter: '!-*jbN-lCC5Q4'
     );
     print(response);
     return Question.fromJson(json.decode(response));
