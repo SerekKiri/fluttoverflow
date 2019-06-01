@@ -3,6 +3,8 @@ import 'package:fluttoverflow/screens/questions.dart';
 import 'package:fluttoverflow/screens/screens.dart';
 import '../theme/theme.dart';
 
+import 'dart:async';
+
 /// Main screen of the application; Holds bottom navigation bar
 class MainScreen extends StatefulWidget {
   @override
@@ -26,7 +28,6 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      appBar: _buildTopAppBar(),
       body: _children[_currentScreenIndex],
       bottomNavigationBar: _buildBottomAppBar(),
     );
@@ -57,56 +58,49 @@ class _MainScreenState extends State<MainScreen> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          _buildIconButton(Icons.notifications, 1, "Notifications"),
-          _buildIconButton(Icons.home, 0, "Home"),
+          _buildIconButton(Icons.home, 1, "Home"),
+          _buildIconButton(Icons.notifications, 0, "Notifications"),
           _buildIconButton(Icons.account_circle, 2, "Profile"),
         ],
       ),
     );
   }
 
-  @override
-  Widget _buildTopAppBar() {
-    return Container(
-      child: Text('ddd'),
-    );
-  }
 
 
   Widget _buildIconButton(IconData icon, num index, String title) {
     var buttonColor = _currentScreenIndex == index
         ? Themes.stackTheme().accentColor
         : Theme.of(context).iconTheme.color.withOpacity(0.40);
-    return 
-      Expanded(
-        child: SafeArea(
-          child: FlatButton(
-            onPressed: () => _onItemTapped(index),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 4.0),
-                    child: Icon(
-                      icon,
-                      size: 24,
-                      color: buttonColor,
-                    ),
+    return Expanded(
+      child: SafeArea(
+        child: FlatButton(
+          onPressed: () => _onItemTapped(index),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 4.0),
+                  child: Icon(
+                    icon,
+                    size: 24,
+                    color: buttonColor,
                   ),
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: buttonColor,
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: buttonColor,
+                  ),
+                )
+              ],
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }

@@ -15,7 +15,10 @@ Question _$QuestionFromJson(Map<String, dynamic> json) {
       json['question_id'] as int,
       json['owner'] == null
           ? null
-          : ShallowUser.fromJson(json['owner'] as Map<String, dynamic>));
+          : ShallowUser.fromJson(json['owner'] as Map<String, dynamic>),
+      json['answers'] == null
+          ? null
+          : Answer.fromJson(json['answers'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
@@ -24,5 +27,6 @@ Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'tags': instance.tags,
       'score': instance.score,
       'owner': instance.owner,
+      'answers': instance.answers,
       'question_id': instance.id
     };
