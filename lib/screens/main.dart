@@ -4,6 +4,7 @@ import 'package:fluttoverflow/screens/site_provider.dart';
 import 'package:provider/provider.dart';
 // import 'package:fluttoverflow/screens/screens.dart';
 import '../theme/theme.dart';
+import './screens.dart';
 
 // import 'dart:async';
 
@@ -17,13 +18,13 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   /// Index of currently selected screen
-  int _currentScreenIndex = 1;
+  int _currentScreenIndex = 0;
 
   /// Screens that can be switched with bottomnavbar
   final List<Widget> _children = [
     QuestionsScreen(),
-    QuestionsScreen(),
-    QuestionsScreen(),
+    NotificationsScreen(),
+    ProfileScreen()
   ];
 
   @override
@@ -61,8 +62,8 @@ class _MainScreenState extends State<MainScreen> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          _buildIconButton(Icons.home, 1, "Home"),
-          _buildIconButton(Icons.notifications, 0, "Notifications"),
+          _buildIconButton(Icons.home, 0, "Home"),
+          _buildIconButton(Icons.notifications, 1, "Notifications"),
           _buildIconButton(Icons.account_circle, 2, "Profile"),
         ],
       ),
