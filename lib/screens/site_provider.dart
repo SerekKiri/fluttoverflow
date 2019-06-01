@@ -12,6 +12,8 @@ class SiteProvider extends ChangeNotifier {
   List<StackExchangeSite> _sites = [];
   int currentSiteIndex = -1;
 
+  bool darkTheme = false;
+
   StackExchangeSite get currentSite => currentSiteIndex == -1
       ? StackExchangeSite('stackoverflow', 'Stack Overflow',
           'https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png')
@@ -25,6 +27,11 @@ class SiteProvider extends ChangeNotifier {
 
   void setSiteIndex(int i) async {
     currentSiteIndex = i;
+    notifyListeners();
+  }
+
+  void switchTheme() {
+    this.darkTheme = !this.darkTheme;
     notifyListeners();
   }
 }

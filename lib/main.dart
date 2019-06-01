@@ -12,10 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<SiteProvider>(
       builder: (context) => SiteProvider(),
-      child: MaterialApp(
+      child: Consumer<SiteProvider>(
+        builder: (context, model, _) => MaterialApp(
       title: 'StackExchange',
-      theme: Themes.stackTheme(),
+      theme: model.darkTheme ? Themes.darkTheme() : Themes.stackTheme(),
       home: MainScreen()),
-    );
+    ));
   }
 }

@@ -56,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
             blurRadius: 2.0,
           ),
         ],
-        color: Themes.stackTheme().primaryColor,
+        color: Theme.of(context).primaryColor,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,

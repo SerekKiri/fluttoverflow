@@ -28,7 +28,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             return Container(
               child: ListView(children: [
                 drawQuestion(context, data),
-                ...data.answers.map((answer) {
+                ...(data.answers ?? []).map((answer) {
                   return drawAnswer(context, answer);
                 })
               ]),

@@ -80,7 +80,7 @@ class QuestionWidget extends StatelessWidget {
                         children: <Widget>[
                           _iconText(
                               Icons.comment, question.answerCount.toString()),
-                          _iconText(Icons.question_answer, "14"),
+                          // _iconText(Icons.question_answer, "14"),
                           Expanded(
                             child: Text(
                               "in " + question.tags.join(", "),
