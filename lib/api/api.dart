@@ -7,13 +7,21 @@ class ExchangeApiClient {
 
   // Makes a basic HTTP request to api stack exchange
   Future<String> getRequest(
-    String endpoint, {
-    Map<String, String> urlEncoded = const {},
-  }) async {
-    final uri = new Uri.https(HOST, '/2.2$endpoint', urlEncoded); // 🥖
+    String endpoint,
+    {
+      String site = 'stackoverflow',
+      String filter = '',
+      Map<String, String> urlEncoded,
+    }
+  ) async {
+    var newUrlEncoded = {
+      'site': site,
+      'filter': filter
+    };
+    final uri = new Uri.https(HOST, '/2.2$endpoint', urlEncoded ?? newUrlEncoded); // 🥖
     var response = await http.get(uri);
-    var bodyd = response.body;
-    return bodyd;
+    var body = response.body;
+    return body;
   }
 }
 
@@ -25,7 +33,7 @@ abstract class ApiEndpoint {
 
 class ExchangeApi {
   ExchangeApiClient _client = ExchangeApiClient();
-  ApiEndpoint questions;
+  QuestionsApi questions;
   
   
   ExchangeApi() {
