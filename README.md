@@ -14,3 +14,14 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+
+
+## Working with StackExchange API
+
+To start you need to create `key.dart` file with code inside:
+
+    const key = 'your_key_here'
+
+Where you can get key?
+
+Enter https://api.stackexchange.com/ and find `Register For An App Key`
