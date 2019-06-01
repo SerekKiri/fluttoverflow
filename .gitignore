@@ -14,7 +14,7 @@
 *.ipr
 *.iws
 .idea/
-
+lib/key.dart
 # Visual Studio Code related
 .vscode/
 

@@ -1,4 +1,5 @@
 import 'package:fluttoverflow/api/questions.dart';
+import 'package:fluttoverflow/key.dart';
 import 'package:http/http.dart' as http;
 
 class ExchangeApiClient {
@@ -16,8 +17,12 @@ class ExchangeApiClient {
   ) async {
     var newUrlEncoded = {
       'site': site,
-      'filter': filter
+      'filter': filter,
+      'key': key,
     };
+    if (urlEncoded != null) {
+      urlEncoded['key'] = key;            
+    }
     final uri = new Uri.https(HOST, '/2.2$endpoint', urlEncoded ?? newUrlEncoded); // 🥖
     var response = await http.get(uri);
     var body = response.body;
