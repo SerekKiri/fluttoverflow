@@ -20,38 +20,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(title: Text('Question')),
       body: Consumer<SiteProvider>(
         builder: (context, model, _) => FutureLoader<Question>(
           future: api.questions.getQuestion(widget.id, model.currentSite),
           builder: (context, data) {
             return Container(
               child: ListView(children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Material(
-                    color: Theme.of(context).cardColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MarkdownBody(data: HtmlUnescape().convert(data.bodyMarkdown)),
-                    ),
-                  ),
-                ),
+                drawQuestion(context, data),
                 ...data.answers.map((answer) {
-                  return Padding(
-                    padding: const EdgeInsets.only( left: 40.0),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Material(
-                                          color: Theme.of(context).cardColor,
-
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: MarkdownBody(data: HtmlUnescape().convert(answer.bodyMarkdown)),
-                        ),
-                      ),
-                    ),
-                  );
+                  return drawAnswer(context, answer);
                 })
               ]),
             );
@@ -59,5 +37,75 @@ class _QuestionScreenState extends State<QuestionScreen> {
         ),
       ),
     );
+  }
+
+
+  Widget drawQuestion(BuildContext context, Question question) {
+
+    return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Material(
+                    color: Theme.of(context).cardColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: drawHeader(context, question.owner),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.all(6.0),
+                            child: Text(question.title, style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold), softWrap: false, overflow: TextOverflow.ellipsis,)),
+                          Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: MarkdownBody(data: HtmlUnescape().convert(question.bodyMarkdown)),
+                      )]),
+                    ),
+                  ),
+                );
+  }
+
+    Widget drawAnswer(BuildContext context, Answer answer) {
+
+    return Padding(
+                  padding: const EdgeInsets.only(left: 48.0, top: 8, right: 8, bottom: 8),
+                  child: Material(
+                    color: Theme.of(context).cardColor,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(children: [
+                        drawHeader(context, answer.owner),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: MarkdownBody(data: HtmlUnescape().convert(answer.bodyMarkdown)
+                      ),
+                        )]),
+                    ),
+                  ),
+                );
+  }
+
+  Widget drawHeader(BuildContext context, ShallowUser user) {
+    return Row(children: <Widget>[
+      Padding(
+              padding: const EdgeInsets.only(bottom: 4.0, right: 6.0),
+              child: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(user.profileImage),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4.0),
+              child: Text(' ' + user.displayName, style: TextStyle(fontSize: 18))
+            ),      
+    ],);
   }
 }
