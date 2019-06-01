@@ -1,6 +1,8 @@
 import 'package:fluttoverflow/api/questions.dart';
 import 'package:fluttoverflow/key.dart';
+import 'package:fluttoverflow/screens/site_provider.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class ExchangeApiClient {
   static const HOST = "api.stackexchange.com";
@@ -47,6 +49,12 @@ class ExchangeApi {
 
   init() {
 
+  }
+
+  Future<List<StackExchangeSite>> getSites() async {
+    var response = await _client.getRequest('/sites');
+    var sitess = json.decode(response)["items"].map((e) => StackExchangeSite(e["api_site_parameter"], e["name"], e["logo_url"]));
+    return List<StackExchangeSite>.from(sitess);
   }
 }
 
