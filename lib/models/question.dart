@@ -8,6 +8,9 @@ class Question {
   @JsonKey(name: 'body_markdown', nullable: true, defaultValue: "")
   final String bodyMarkdown;
 
+  @JsonKey(name: 'creation_date', nullable: true, defaultValue: "")
+  final int creationDate;
+
   @JsonKey(name: 'title')
   final String title;
 
@@ -29,7 +32,7 @@ class Question {
   @JsonKey(name: 'question_id')
   final int id;
 
-  Question(this.bodyMarkdown, this.title, this.tags, this.score, this.id, this.owner, this.answerCount, this.answers);
+  Question(this.bodyMarkdown, this.title, this.tags, this.score, this.id, this.owner, this.answerCount, this.answers, this.creationDate);
 
   factory Question.fromJson(Map<String, dynamic> json) => _$QuestionFromJson(json);
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttoverflow/models/models.dart';
-
+import 'package:timeago/timeago.dart' as timeago;
 /// 🥖
 class QuestionWidget extends StatelessWidget {
   final Question question;
@@ -9,6 +9,7 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(question.creationDate);
     return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
@@ -48,7 +49,7 @@ class QuestionWidget extends StatelessWidget {
                                       fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w600),
                                 ),
                                 TextSpan(
-                                  text: ' asked 3 minutes ago',
+                                  text: ' asked ' + timeago.format(DateTime.fromMillisecondsSinceEpoch(question.creationDate * 1000)),
                                   style: TextStyle(
                                       fontSize: 14, color: Colors.grey),
                                 )
@@ -68,6 +69,15 @@ class QuestionWidget extends StatelessWidget {
                           children: <Widget>[
                             _iconText(Icons.comment, question.answerCount.toString()),
                             _iconText(Icons.question_answer, "14"),
+                            Expanded(
+                              child: Text(
+                                    "in " + question.tags.join(", "),
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.grey, ),
+                                              softWrap: false,
+                              overflow: TextOverflow.ellipsis,
+                                  ),
+                            )
                           ],
                         ),
                         /*Padding(

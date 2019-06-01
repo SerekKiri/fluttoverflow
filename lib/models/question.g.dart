@@ -20,11 +20,13 @@ Question _$QuestionFromJson(Map<String, dynamic> json) {
       (json['answers'] as List)
           ?.map((e) =>
               e == null ? null : Answer.fromJson(e as Map<String, dynamic>))
-          ?.toList());
+          ?.toList(),
+      json['creation_date'] as int ?? '');
 }
 
 Map<String, dynamic> _$QuestionToJson(Question instance) => <String, dynamic>{
       'body_markdown': instance.bodyMarkdown,
+      'creation_date': instance.creationDate,
       'title': instance.title,
       'tags': instance.tags,
       'score': instance.score,
