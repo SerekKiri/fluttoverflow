@@ -25,6 +25,7 @@ class QuestionsApi extends ApiEndpoint {
       case QuestionSort.ACTIVITY: sort = 'activity'; break;
       case QuestionSort.HOT: sort = 'hot'; break;
     }
+    print(sort);
     var response = await client.getRequest(
       '/questions',
       site: 'stackoverflow',
@@ -33,7 +34,6 @@ class QuestionsApi extends ApiEndpoint {
         'site': 'stackoverflow',
       }
     );
-    print(response);
     var questions = json.decode(response)["items"].map((dupa) => Question.fromJson(dupa));
     print (questions);
     return List<Question>.from(questions);

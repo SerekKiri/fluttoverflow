@@ -38,11 +38,31 @@ class AppbarTabsWidget extends PreferredSize {
         ],
       ),
       child: AppBar(
-        /*automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         leading: Container(
           color: Theme.of(context).primaryColor,
-          child: this.showCurrentUser ?  null : null,
-        ),*/
+          child: InkWell(
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onTap: () {
+              /*Navigator.of(context).push(
+                Utils.getPageTransition(
+                  MainSettingsScreen(),
+                ),
+              );*/
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(
+                          "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png"
+                        )
+              ),
+            ),
+)),
+        ),
         title: Stack(
           children: <Widget>[
             Container(

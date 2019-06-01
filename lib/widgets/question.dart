@@ -39,6 +39,22 @@ class QuestionWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Padding(
+                            padding: const EdgeInsets.only(bottom: 4.0),
+                            child: RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                  text: question.owner.displayName,
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey, fontWeight: FontWeight.w600),
+                                ),
+                                TextSpan(
+                                  text: ' asked 3 minutes ago',
+                                  style: TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                )
+                              ]),
+                            )),
+                        Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: Text(
                             question.title,
@@ -52,7 +68,6 @@ class QuestionWidget extends StatelessWidget {
                           children: <Widget>[
                             _iconText(Icons.comment, "14"),
                             _iconText(Icons.question_answer, "14"),
-                            _iconText(Icons.query_builder, "3 minutes"),
                           ],
                         ),
                         /*Padding(

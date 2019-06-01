@@ -12,6 +12,7 @@ class QuestionsScreen extends StatefulWidget {
 class _QuestionsScreenState extends State<QuestionsScreen> {
   Widget getListWithSort (QuestionSort sortType) {
     return Container(
+      key: ValueKey(sortType),
       child: Center(
         child: FutureLoader<List<Question>>(
           future: api.questions
