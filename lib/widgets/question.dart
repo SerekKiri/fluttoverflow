@@ -66,7 +66,7 @@ class QuestionWidget extends StatelessWidget {
                         ),
                         Row(
                           children: <Widget>[
-                            _iconText(Icons.comment, "14"),
+                            _iconText(Icons.comment, question.answerCount.toString()),
                             _iconText(Icons.question_answer, "14"),
                           ],
                         ),
