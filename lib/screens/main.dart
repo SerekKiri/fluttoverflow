@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttoverflow/screens/questions.dart';
 import 'package:fluttoverflow/screens/screens.dart';
+import '../theme/theme.dart';
 
 /// Main screen of the application; Holds bottom navigation bar
 class MainScreen extends StatefulWidget {
@@ -49,15 +50,15 @@ class _MainScreenState extends State<MainScreen> {
             blurRadius: 2.0,
           ),
         ],
-        color: Theme.of(context).primaryColor,
+        color: Themes.stackTheme().primaryColor,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          _buildIconButton(Icons.question_answer, 0, "QUESTIONS"),
-          _buildIconButton(Icons.shuffle, 1, "PROFILE"),
-          _buildIconButton(Icons.queue, 2, "SETTINGS"),
+          _buildIconButton(Icons.notifications, 1, "Notifications"),
+          _buildIconButton(Icons.home, 0, "Home"),
+          _buildIconButton(Icons.account_circle, 2, "Profile"),
         ],
       ),
     );
@@ -66,7 +67,7 @@ class _MainScreenState extends State<MainScreen> {
 
   Widget _buildIconButton(IconData icon, num index, String title) {
     var buttonColor = _currentScreenIndex == index
-        ? Theme.of(context).iconTheme.color
+        ? Themes.stackTheme().accentColor
         : Theme.of(context).iconTheme.color.withOpacity(0.40);
     return 
       Expanded(
