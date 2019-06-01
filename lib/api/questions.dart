@@ -17,7 +17,21 @@ class QuestionsApi extends ApiEndpoint {
     QuestionSort sortType = QuestionSort.ACTIVITY,
     int count = 25,
   }) async {
-    var response = await client.getRequest('/questions', site: 'stackoverflow');
+    var sort = '';
+    switch (sortType) {
+      case QuestionSort.WEEK: sort = 'week'; break;
+      case QuestionSort.MONTH: sort = 'month'; break;
+      case QuestionSort.CREATION: sort = 'creation'; break;
+      case QuestionSort.ACTIVITY: sort = 'activity'; break;
+      case QuestionSort.HOT: sort = 'hot'; break;
+    }
+    var response = await client.getRequest(
+      '/questions',
+      site: 'stackoverflow',
+      urlEncoded: {
+        'sort': sort
+      }
+    );
     print(response);
     var questions = json.decode(response)["items"].map((dupa) => Question.fromJson(dupa));
     print (questions);
