@@ -15,7 +15,7 @@ class QuestionsList extends StatelessWidget {
       child: Center(
         child: FutureLoader<List<Question>>(
           future: api.questions
-              .getQuestions(sortType: QuestionSort.ACTIVITY),
+              .getQuestions(sortType: sortType),
           builder: (context, data) {
             return ListView.builder(
               itemCount: data.length,
