@@ -19,7 +19,7 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           builder: (context, data) {
             return ListView.builder(
               itemCount: data.length,
-              itemBuilder: (context, index) => Text(data[index].title),
+              itemBuilder: (context, index) => QuestionWidget(question: data[index]),
             ); // @TODO UNDUPA
           },
         ),

@@ -1,3 +1,4 @@
+import 'package:fluttoverflow/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'question.g.dart';
@@ -16,10 +17,13 @@ class Question {
   @JsonKey(name: 'score')
   final int score;
 
+  @JsonKey(name: 'owner')
+  final ShallowUser owner;
+
   @JsonKey(name: 'question_id')
   final int id;
 
-  Question(this.bodyMarkdown, this.title, this.tags, this.score, this.id);
+  Question(this.bodyMarkdown, this.title, this.tags, this.score, this.id, this.owner);
 
   factory Question.fromJson(Map<String, dynamic> json) => _$QuestionFromJson(json);
 
