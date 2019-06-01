@@ -2,6 +2,8 @@ import 'package:fluttoverflow/api/api.dart';
 import 'package:fluttoverflow/models/models.dart';
 import 'dart:convert';
 
+import 'package:fluttoverflow/screens/site_provider.dart';
+
 enum QuestionSort {
   WEEK,
   MONTH,
@@ -16,6 +18,7 @@ class QuestionsApi extends ApiEndpoint {
   Future<List<Question>> getQuestions({
     QuestionSort sortType = QuestionSort.ACTIVITY,
     int count = 25,
+    StackExchangeSite site,
   }) async {
     var sort = '';
     switch (sortType) {
@@ -28,10 +31,10 @@ class QuestionsApi extends ApiEndpoint {
     print(sort);
     var response = await client.getRequest(
       '/questions',
-      site: 'stackoverflow',
+      site: site.url,
       urlEncoded: {
         'sort': sort,
-        'site': 'stackoverflow',
+        'site': site.url,
       }
     );
     var questions = json.decode(response)["items"].map((dupa) => Question.fromJson(dupa));

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttoverflow/screens/questions.dart';
+import 'package:fluttoverflow/screens/site_provider.dart';
+import 'package:provider/provider.dart';
 // import 'package:fluttoverflow/screens/screens.dart';
 import '../theme/theme.dart';
 
@@ -27,9 +29,10 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: _children[_currentScreenIndex],
-      bottomNavigationBar: _buildBottomAppBar(),
+        resizeToAvoidBottomPadding: false,
+        body: _children[_currentScreenIndex],
+        bottomNavigationBar: _buildBottomAppBar(),
+      
     );
   }
 
@@ -65,8 +68,6 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
-
 
   Widget _buildIconButton(IconData icon, num index, String title) {
     var buttonColor = _currentScreenIndex == index

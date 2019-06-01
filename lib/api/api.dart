@@ -18,8 +18,6 @@ class ExchangeApiClient {
     }
   ) async {
     var newUrlEncoded = {
-      'site': site,
-      'filter': filter,
       'key': key,
     };
     if (urlEncoded != null) {
@@ -53,7 +51,8 @@ class ExchangeApi {
 
   Future<List<StackExchangeSite>> getSites() async {
     var response = await _client.getRequest('/sites');
-    var sitess = json.decode(response)["items"].map((e) => StackExchangeSite(e["api_site_parameter"], e["name"], e["logo_url"]));
+    print(response);
+    var sitess = json.decode(response)["items"].map((e) => StackExchangeSite(e["api_site_parameter"], e["name"], e["icon_url"]));
     return List<StackExchangeSite>.from(sitess);
   }
 }

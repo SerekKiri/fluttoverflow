@@ -3,11 +3,15 @@ export 'question.dart';
 export 'questions_list.dart';
 
 import 'package:flutter/material.dart';
+import 'package:fluttoverflow/screens/pick_site.dart';
 // import 'package:fluttoverflow/screens/questions.dart';
 // import 'package:fluttoverflow/screens/screens.dart';
 // import '../theme/theme.dart';
 
 import 'dart:async';
+
+import 'package:fluttoverflow/screens/site_provider.dart';
+import 'package:provider/provider.dart';
 
 typedef void SearchCallback(String query, Completer completer);
 
@@ -43,26 +47,24 @@ class AppbarTabsWidget extends PreferredSize {
         leading: Container(
           color: Theme.of(context).primaryColor,
           child: InkWell(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onTap: () {
-              /*Navigator.of(context).push(
-                Utils.getPageTransition(
-                  MainSettingsScreen(),
-                ),
-              );*/
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: NetworkImage(
-                          "https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png"
-                        )
-              ),
-            ),
-)),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PickSite()),
+                );
+              },
+              child: Consumer<SiteProvider>(
+                builder: (context, model, widget) => Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            fit: BoxFit.contain,
+                            image: NetworkImage(model.currentSite.iconUrl)),
+                      ),
+                    ),
+              )),
         ),
         title: Stack(
           children: <Widget>[

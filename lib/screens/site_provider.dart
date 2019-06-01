@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fluttoverflow/api/api.dart';
 
@@ -9,13 +8,14 @@ class StackExchangeSite {
   StackExchangeSite(this.url, this.description, this.iconUrl);
 }
 
-
-
 class SiteProvider extends ChangeNotifier {
-  List<StackExchangeSite> _sites  = [];
+  List<StackExchangeSite> _sites = [];
   int currentSiteIndex = -1;
 
-  StackExchangeSite get currentSite => currentSiteIndex == -1 ? StackExchangeSite('stackoverflow', 'Stack Overflow', '') : _sites[currentSiteIndex];
+  StackExchangeSite get currentSite => currentSiteIndex == -1
+      ? StackExchangeSite('stackoverflow', 'Stack Overflow',
+          'https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png')
+      : _sites[currentSiteIndex];
   List<StackExchangeSite> get sites => _sites;
 
   void loadSites() async {
