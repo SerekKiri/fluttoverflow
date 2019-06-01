@@ -63,9 +63,15 @@ class QuestionsApi extends ApiEndpoint {
   }
 
   Future<Question> getQuestion(int id) async {
-    var response = await client.getRequest('/questions/$id',
-        site: 'stackoverflow', filter: '!b1MMEU*.-3EcYn');
+    print('Getting question $id...');
+    var response = await client.getRequest(
+      '/questions/$id',
+      site: 'stackoverflow',
+      filter: '!b1MMEU*.-3EcYn'
+    );
     print(response);
-    return Question.fromJson(json.decode(response));
+    var questions = json.decode(response)["items"].map((dupa) => Question.fromJson(dupa));
+    print(questions);
+    return List<Question>.from(questions)[0];
   }
 }
