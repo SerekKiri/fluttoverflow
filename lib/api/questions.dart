@@ -64,11 +64,11 @@ class QuestionsApi extends ApiEndpoint {
     return List<Question>.from(questions);
   }
 
-  Future<Question> getQuestion(int id) async {
+  Future<Question> getQuestion(int id, StackExchangeSite site) async {
     print('Getting question $id...');
     var response = await client.getRequest(
       '/questions/$id',
-      site: 'stackoverflow',
+      site: site.url,
       filter: '!b1MMEU*.-3EcYn'
     );
     print(response);

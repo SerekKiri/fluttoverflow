@@ -13,6 +13,7 @@ class QuestionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        print("dupa");
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) =>
                 QuestionScreen(id: question.id, title: question.title)));
