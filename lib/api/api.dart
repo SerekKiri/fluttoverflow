@@ -1,4 +1,5 @@
 import 'package:fluttoverflow/api/questions.dart';
+import 'package:fluttoverflow/api/users.dart';
 import 'package:fluttoverflow/key.dart';
 import 'package:fluttoverflow/screens/site_provider.dart';
 import 'package:http/http.dart' as http;
@@ -12,8 +13,8 @@ class ExchangeApiClient {
   Future<String> getRequest(
     String endpoint,
     {
-      String site = 'stackoverflow',
-      String filter = '',
+      String site,
+      String filter,
       Map<String, String> urlEncoded,
     }
   ) async {
@@ -43,10 +44,12 @@ abstract class ApiEndpoint {
 class ExchangeApi {
   ExchangeApiClient _client = ExchangeApiClient();
   QuestionsApi questions;
+  UsersApi users;
   
   
   ExchangeApi() {
     questions = QuestionsApi(_client);
+    users = UsersApi(_client);
   }
 
   init() {

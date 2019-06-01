@@ -13,7 +13,7 @@ UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
       badgeCounts: json['badge_counts'] as List,
       reputation: json['reputation'] as int,
       location: json['location'] as String,
-      user_id: json['user_id'] as int);
+      userId: json['user_id'] as int);
 }
 
 Map<String, dynamic> _$UserProfileToJson(UserProfile instance) =>
@@ -23,5 +23,5 @@ Map<String, dynamic> _$UserProfileToJson(UserProfile instance) =>
       'badge_counts': instance.badgeCounts,
       'reputation': instance.reputation,
       'location': instance.location,
-      'user_id': instance.user_id
+      'user_id': instance.userId
     };

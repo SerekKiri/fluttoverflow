@@ -21,6 +21,11 @@ class UserProfile {
     final String location;
 
   @JsonKey(name: 'user_id')
-    final int user_id;
-  UserProfile({this.avatarUrl, this.displayName, this.badgeCounts, this.reputation, this.location, this.user_id });
+    final int userId;
+ 
+  UserProfile({this.avatarUrl, this.displayName, this.badgeCounts, this.reputation, this.location, this.userId });
+
+  factory UserProfile.fromJson(Map<String, dynamic> json) => _$UserProfileFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserProfileToJson(this);
 }
