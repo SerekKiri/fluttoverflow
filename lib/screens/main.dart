@@ -26,8 +26,8 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
-      body: _children[_currentScreenIndex],
       appBar: _buildTopAppBar(),
+      body: _children[_currentScreenIndex],
       bottomNavigationBar: _buildBottomAppBar(),
     );
   }

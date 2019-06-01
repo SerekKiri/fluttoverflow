@@ -51,8 +51,8 @@ class QuestionWidget extends StatelessWidget {
                         Row(
                           children: <Widget>[
                             _iconText(Icons.comment, "14"),
-                            _iconText(Icons.arrow_upward, "14"),
-                            _iconText(Icons.date_range, "3 minutes"),
+                            _iconText(Icons.question_answer, "14"),
+                            _iconText(Icons.query_builder, "3 minutes"),
                           ],
                         ),
                         /*Padding(
