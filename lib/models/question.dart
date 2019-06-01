@@ -21,7 +21,7 @@ class Question {
   final ShallowUser owner;
 
   @JsonKey(name: 'answers')
-  final Answer answers;
+  final List<Answer> answers;
 
   @JsonKey(name: 'question_id')
   final int id;
