@@ -132,7 +132,7 @@ class AppbarTabsWidget extends PreferredSize {
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
                   onPressed: onPressedSearch ?? () {},
-                  tooltip: "Szukaj",
+                  tooltip: "Search",
                 ),
               ),
             ],
@@ -163,7 +163,28 @@ class SearchAppbarWidget extends PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // leading: Text('asd'),
+      leading: Container(
+          color: Theme.of(context).primaryColor,
+          child: InkWell(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PickSite()),
+                );
+              },
+              child: Consumer<SiteProvider>(
+                builder: (context, model, widget) => Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            fit: BoxFit.contain,
+                            image: NetworkImage(model.currentSite.iconUrl)),
+                      ),
+                    ),
+              )),
+        ),
       title: Container(
         color: Theme.of(context).primaryColor,
         child: WillPopScope(
@@ -191,7 +212,7 @@ class SearchAppbarWidget extends PreferredSize {
               maxLines: 1,
               controller: searchInputController,
               onSubmitted: (text) {
-                //callback(text);
+                searchCallback(text == "" ? null : text, null);
               },
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
@@ -199,7 +220,7 @@ class SearchAppbarWidget extends PreferredSize {
                   vertical: 8.0,
                 ),
                 border: InputBorder.none,
-                hintText: 'Szukaj',
+                hintText: 'Search',
               ),
             ),
           ),

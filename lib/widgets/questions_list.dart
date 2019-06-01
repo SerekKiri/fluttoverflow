@@ -8,8 +8,9 @@ import 'package:provider/provider.dart';
 
 class QuestionsList extends StatelessWidget {
   final QuestionSort sortType;
+  final String tag;
 
-  const QuestionsList(this.sortType, { key });
+  const QuestionsList(this.sortType, this.tag, { key });
 
   @override
   Widget build(BuildContext context) {    
@@ -18,7 +19,7 @@ class QuestionsList extends StatelessWidget {
         builder: (context, model, _) => Center(
           child: FutureLoader<List<Question>>(
             future: api.questions
-                .getQuestions(sortType: sortType, site: model.currentSite),
+                .getQuestions(sortType: sortType, site: model.currentSite, tagged: tag),
             builder: (context, data) {
               return ListView.builder(
                 itemCount: data.length,

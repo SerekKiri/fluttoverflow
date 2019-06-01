@@ -41,13 +41,15 @@ class QuestionsApi extends ApiEndpoint {
     }
     print(sort);
     var response;
+    print(tagged);
     if (tagged != null) {
       response =
           await client.getRequest('/search', site: site.url, urlEncoded: {
-        'sort': sort,
+        'sort': sort == "hot" ? "activity" : sort,
         'tagged': tagged,
         'site': site.url,
       });
+      print(response);
     } else {
       response =
           await client.getRequest('/questions', site: site.url, urlEncoded: {
