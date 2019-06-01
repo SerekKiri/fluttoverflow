@@ -1,4 +1,3 @@
-import 'package:fluttoverflow/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_profile.g.dart';
@@ -12,7 +11,7 @@ class UserProfile {
     final String displayName;
 
   @JsonKey(name: 'badge_counts')
-    final List badgeCounts;
+    final dynamic badgeCounts;
 
   @JsonKey(name: 'reputation')
     final int reputation;

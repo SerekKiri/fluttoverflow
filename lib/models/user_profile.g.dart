@@ -10,7 +10,7 @@ UserProfile _$UserProfileFromJson(Map<String, dynamic> json) {
   return UserProfile(
       avatarUrl: json['profile_image'] as String,
       displayName: json['display_name'] as String,
-      badgeCounts: json['badge_counts'] as List,
+      badgeCounts: json['badge_counts'] as dynamic,
       reputation: json['reputation'] as int,
       location: json['location'] as String,
       userId: json['user_id'] as int);

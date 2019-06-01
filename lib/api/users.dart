@@ -7,10 +7,12 @@ class UsersApi extends ApiEndpoint {
 
   Future<UserProfile> getUser (String id) async {
     var response = await client.getRequest(
-      '/users/$id'
+      '/users/$id',
+      site: 'stackoverflow'
     );
-    var questions = json.decode(response)["items"].map((dupa) => UserProfile.fromJson(dupa));
-    print(questions);
-    return List<UserProfile>.from(questions)[0];
+    print(response);
+    var profiles = json.decode(response)["items"].map((dupa) => UserProfile.fromJson(dupa));
+    print(profiles);
+    return List<UserProfile>.from(profiles)[0];
   }
 }
