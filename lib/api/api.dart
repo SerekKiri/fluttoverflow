@@ -29,6 +29,7 @@ class ExchangeApiClient {
       urlEncoded['key'] = key; 
     }
     final uri = new Uri.https(HOST, '/2.2$endpoint', urlEncoded ?? newUrlEncoded); // 🥖
+    print(uri);
     var response = await http.get(uri);
     var body = response.body;
     return body;
