@@ -8,12 +8,7 @@ class NotificationsScreen extends StatelessWidget {
         title: Text('Notifications'),
       ),
       body: Center(
-        child: RaisedButton(
-          child: Text('ddd'),
-          onPressed: () {
-
-          },
-        ),
+        child: Text('You have zero notifications')
       ),
     );
   }

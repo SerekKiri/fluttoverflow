@@ -5,16 +5,11 @@ class ProfileScreen extends StatelessWidget {
  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ddd')
+        title: Text('Profile')
       ),
       body: Center(
-        child: RaisedButton(
-          child: Text('ddd'),
-          onPressed: () {
-
-          },
-        ),
-      ),
+        child: Text('ddd')
+      )
     );
   }
 }
