@@ -11,7 +11,6 @@ class QuestionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(question.creationDate);
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
